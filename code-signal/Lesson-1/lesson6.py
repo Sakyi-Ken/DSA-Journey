@@ -21,16 +21,50 @@ def frequent_word_finder(text):
   word_list = text.split()
   for word in word_list:
     word_counts[word] += 1
-  top_three = sorted(word_counts.items(), key=lambda x:x[1], reverse=True)[:3]
+  top_three = sorted(word_counts.items(), key=lambda x: x[1], reverse=True)[:3]
   return top_three
+
+def alt_solution(text):
+  ''' str -> dict
+  This function takes a string of text, splits it into words, and returns a dictionary with the frequency of each word.
+  '''
+  from collections import Counter
+  text = text.lower()
+  words = text.split()
+  return (Counter(words).most_common(3))
+
+def alt_frequent_word_finder(text):
+  text = text.lower()
+  frequency = {}
+  words = text.split()
+  for word in words:
+    #if word in frequency:
+      #frequency[word] += 1
+    #else:
+      #frequency[word] = 1
+    frequency[word] = frequency.get(word, 0) + 1
+  return sorted(frequency.items(), key=lambda x: x[1], reverse=True)[:3]
+
+def alt_word_frequency(words):
+  ''' list -> dict
+  This function counts the frequency of each word in a list and returns a dictionary with words as keys and their frequencies as values.
+  '''
+  from collections import defaultdict
+  frequency = defaultdict(int)
+  for word in words:
+    frequency[word] += 1
+  return dict(frequency)
 
 #example usage
 if __name__ == "__main__":
   words = ['apple', 'banana', 'apple', 'orange', 'banana', 'apple']
   print(word_frequency(words))  # Output: {'apple': 3, 'banana': 2, 'orange': 1}
-
+  # Example usage
   text = "This is a test. This test is only a test."
   print(frequent_word_finder(text))  # Output: [('test.', 3), ('this', 2), ('is', 2)]
+  print(alt_solution(text))  # Output: {'test.': 3, 'this': 2, 'is': 2}
+  words = 'hello, world, hello, python'
+  print(alt_frequent_word_finder(words))  # Output: [('hello', 2), ('world', 1), ('python', 1)]
 
 # Problem2: Simple word frequency analyzer with punctuation handling
 def word_frequency_with_punctuation(text):
