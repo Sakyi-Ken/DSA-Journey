@@ -60,6 +60,22 @@ def alt_keyword_index_with_counts(docs):
       index[word][doc_id] += 1
   return {word: dict(doc_counts) for word, doc_counts in index.items()}
 
-docs = ["Hello world", "world of python", "python is a snake"]
+docs = ["Hello world", "world of python", "python is a name of a snake but not a snake"]
 print(keyword_index(docs))  # Expected output: {'Hello': {0: 1}, 'world': {0: 1, 1: 1}, 'of': {1: 1}, 'python': {1: 1, 2: 1}, 'is': {2: 1}, 'a': {2: 1}, 'snake': {2: 1}}
-print(alt_keyword_index(docs))
+print(alt_keyword_index_with_counts(docs))
+
+def alt_keyword_index_counts(docs):
+  index = {}
+  for doc_index, doc in enumerate(docs):
+    words = doc.split()
+    for word in words:
+      if word in index:
+        if doc_index in index[word]:
+          index[word][doc_index] += 1
+        else:
+          index[word][doc_index] = 1
+      else:
+        index[word] = {doc_index: 1}
+  return index
+docs = ["Hello world", "world of python", "python is a name of a snake but not a snake"]
+print(alt_keyword_index_counts(docs))  # Expected output: {'Hello': {0: 1}, 'world': {0: 1, 1: 1}, 'of': {1: 1}, 'python': {1: 1, 2: 1}, 'is': {2: 1}, 'a': {2: 1}, 'snake': {2: 2, 3: 1}}
