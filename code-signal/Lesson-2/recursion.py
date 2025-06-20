@@ -116,7 +116,7 @@ def factorials(nums):
   for num in nums:
     fact = alt_factorial(num)
     if fact is not None:
-      results.append(f)
+      results.append(fact)
     else:
       results.append('Error')
   return results
@@ -126,3 +126,5 @@ if __name__ == "__main__":
   n = 5
   print(f"Factorial of {n} (Recursive): {factorial(n)}")  # Output: 120
   print(f"Factorial of {n} (Iterative): {factorial_iter(n)}")  # Output: 120
+  nums = [0, 1, 2, 3, 4, 5]
+  print(f"Factorials of {nums}: {factorials(nums)}")  # Output: [1, 1, 2, 6, 24, 120]
