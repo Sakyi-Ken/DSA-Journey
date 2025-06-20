@@ -103,6 +103,24 @@ def factorial_iter(n):
     result *= i
   return result
 
+def alt_factorial(num):
+  if num < 0:
+    return None
+  elif num == 0 or num == 1:
+    return 1
+  else:
+    return num * alt_factorial(num - 1)
+
+def factorials(nums):
+  results = []
+  for num in nums:
+    fact = alt_factorial(num)
+    if fact is not None:
+      results.append(f)
+    else:
+      results.append('Error')
+  return results
+
 # Example usage for factorial
 if __name__ == "__main__":
   n = 5
