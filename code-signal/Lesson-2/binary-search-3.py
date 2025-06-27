@@ -174,8 +174,29 @@ def test_search_rotated(nums, target):
       left += 1
   return -1
 
+def alt_search_rotated(nums, target):
+  left, right = 0, len(nums) - 1
+  while left <= right:
+    mid = (left + right) // 2
+    if nums[mid] == target:
+      return mid
+
+    if nums[left] >= nums[mid]:
+      if nums[left] >= target > nums[mid]:
+        right = mid - 1
+      else:
+        left = mid + 1
+    else:  # Right half is sorted (decreasing)
+      if nums[mid] > target >= nums[right]:
+        left = mid + 1
+      else:
+        right = mid - 1
+
 # Example usage
 nums = [9, 8, 7, 6, 5, 4, 3, 2, 1]
 target = 6
 result = test_search_rotated(nums, target)
+print("Index of target in (possibly rotated) sorted array:", result)
+
+result = alt_search_rotated(nums, target)
 print("Index of target in (possibly rotated) sorted array:", result)
