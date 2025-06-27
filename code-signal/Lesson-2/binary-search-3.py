@@ -29,7 +29,7 @@ def get_first_last_pos(nums, target):
         return binary_search(left, mid - 1, find_first)
       else:
         return binary_search(mid + 1, right, find_first)
-    return left
+    return left 
   
   first = binary_search(0, len(nums) - 1, True)
   last = binary_search(0, len(nums) -1, False) - 1
@@ -147,4 +147,35 @@ def search_insert(nums, target):
       left = mid
     else:
       right = mid
-  return left
+  return left 
+
+def test_search_rotated(nums, target):
+  left, right = 0, len(nums) - 1
+  while left <= right:
+    mid = (left + right) // 2
+    if nums[mid] == target:
+      return mid
+    
+    # Check if the current segment is ascending or descending
+    if nums[left] < nums[right]: # Ascending
+      if nums[mid] < target:
+        left = mid + 1
+      else:
+        right = mid - 1
+    elif nums[left] > nums[right]: # Descending
+      if nums[mid] > target:
+        left = mid + 1
+      else:
+        right = mid - 1
+    else:
+      # Handles duplicates or single element
+      if nums[left] == target:
+        return left
+      left += 1
+  return -1
+
+# Example usage
+nums = [9, 8, 7, 6, 5, 4, 3, 2, 1]
+target = 6
+result = test_search_rotated(nums, target)
+print("Index of target in (possibly rotated) sorted array:", result)
