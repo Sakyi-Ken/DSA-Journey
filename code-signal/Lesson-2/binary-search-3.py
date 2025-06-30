@@ -143,7 +143,7 @@ def search_insert(nums, target):
   left, right = 0, len(nums)
   while right - left > 1:
     mid = (left + right) // 2
-    if nums[mid] < target:
+    if nums[mid] <= target:
       left = mid
     else:
       right = mid
