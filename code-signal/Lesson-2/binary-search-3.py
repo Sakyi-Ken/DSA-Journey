@@ -143,11 +143,23 @@ def search_insert(nums, target):
   left, right = 0, len(nums)
   while right - left > 1:
     mid = (left + right) // 2
+    if nums[mid] == target:
+      return mid
     if nums[mid] <= target:
       left = mid
     else:
       right = mid
-  return left 
+  # return left 
+  #return right
+  return left + 1 if nums[left] < target else left
+# Example usage
+nums = [1, 3, 5, 6]
+target = 5
+result = search_insert(nums, target)
+print("Insert position for target in sorted list:", result)
+print(search_insert([1, 2, 3, 3, 5], 3))  # Expected output: 2
+print(search_insert([1, 2, 3, 3, 5], 4))  # Expected output: 4
+print(search_insert([1, 3, 5, 7, 9], 10)) # Expected output: 5
 
 def test_search_rotated(nums, target):
   left, right = 0, len(nums) - 1
