@@ -17,6 +17,7 @@ def fibo_trace(n, computed = {0: 0, 1: 1}, depth=0):
   return computed[n]
 
 # Trace for iteration
+# Iterative method 1: Swapping (using temporary variable)
 def fib_iter_trace(n):
   print(f"fib_iter({n}):")
   if n <= 1:
@@ -25,9 +26,34 @@ def fib_iter_trace(n):
   a, b = 0, 1
   print(f"  a=0, b=1")
   for i in range(2, n + 1):
-    a, b = b, a + b
+    temp = a + b
+    a = b
+    b = temp  # This is the "temporary variable" (swapping) method
     print(f"  i={i}: a={a}, b={b}")
   return b
+
+# Iterative method 2: Tuple unpacking (Pythonic swap)
+def fib_iter_tuple(n):
+  print(f"fib_iter_tuple({n}):")
+  a, b = 0, 1
+  print(f"  a=0, b=1")
+  for i in range(n):
+    a, b = b, a + b  # Pythonic swap
+    print(f"  i={i+1}: a={a}, b={b}")
+  return a
+
+# Iterative method 3: Using a list (array)
+def fib_iter_list(n):
+  print(f"fib_iter_list({n}):")
+  if n <= 1:
+    print(f"  Return {n}")
+    return n
+  fibs = [0, 1]
+  print(f"  fibs=[0, 1]")
+  for i in range(2, n + 1):
+    fibs.append(fibs[-1] + fibs[-2])
+    print(f"  i={i}: fibs={fibs}")
+  return fibs[n]
 
 # Example usage
 if __name__ == "__main__":
