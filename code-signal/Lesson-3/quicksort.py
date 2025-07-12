@@ -1,3 +1,4 @@
+# Method 1 
 def quick_sort(arr):
   # import random 
   if len(arr) <= 1:
@@ -12,6 +13,7 @@ def quick_sort(arr):
 
 print(quick_sort([9, 7, 5, 11, 12, 2, 14, 3, 10, 6]))
 
+# Method 2 using Partition
 def quick_sort_in_place(arr, low, high):
   if low < high:
     pi = partition(arr, low, high)
@@ -60,7 +62,9 @@ def partition(arr, low, high):
     #while i <= j and arr[i] >= pivot:
     #  i += 1
     #while arr[j] <= pivot and j >= i:
-      # Ascending order partitioning
+    #  j-=1
+  
+    # Ascending order partitioning
     while i <= j and arr[i] <= pivot:
       i += 1
     while arr[j] >= pivot and j >= i:
