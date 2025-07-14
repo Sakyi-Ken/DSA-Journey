@@ -80,15 +80,14 @@ def find_kth_smallest(numbers, k):
   if numbers:
     pos = partition(numbers, 0, len(numbers) - 1)
     if k - 1 == pos:
-      # The pivot is the k-th smallest element after partitioning.
       return numbers[pos]
     elif k - 1 < pos:
-      # The pivot index after partitioning is larger than k - 1
-      # We will keep searching in the left part
+      # We use numbers[:pos], k because k is the position in the original list,
+      # and the left part contains indices 0 to pos-1, so k remains unchanged.
       return find_kth_smallest(numbers[:pos], k)
     else:
-      # The pivot index after partitioning is smaller than k - 1
-      # We'll keep searching in the right sort
+      # For the right part, we use numbers[pos + 1:], k - pos - 1 because
+      # we have skipped pos + 1 elements, so the k-th smallest is now (k - pos - 1)-th in the right part.
       return find_kth_smallest(numbers[pos + 1:], k - pos - 1)
 
 def partition(nums, l, r):
