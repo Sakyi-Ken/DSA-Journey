@@ -12,12 +12,12 @@ def quickselect(values, k):
     if k < 1 or k > len(values):
       raise ValueError("k must be between 1 and the length of the list")
     
-    def partition(left, right, pivot_index):
+    def partition(left, right, pivot_index): # Takes the pivot from the right
       pivot_value = values[pivot_index]
       values[pivot_index], values[right] = values[right], values[pivot_index]
       store_index = left
       for i in range(left, right):
-        if values[i] < pivot_value:
+        if values[i] < pivot_value: # Organize very well when there are duplicates.
           values[store_index], values[i] = values[i], values[store_index]
           store_index += 1
       values[right], values[store_index] = values[store_index], values[right]
@@ -90,7 +90,7 @@ def find_kth_smallest(numbers, k):
       # we have skipped pos + 1 elements, so the k-th smallest is now (k - pos - 1)-th in the right part.
       return find_kth_smallest(numbers[pos + 1:], k - pos - 1)
 
-def partition(nums, l, r):
+def partition(nums, l, r): # Takes the pivot from the left.
   # Choosing a random index to make the algorithm less deterministic
   rand_index = random.randint(l, r)
   nums[l], nums[rand_index] = nums[rand_index], nums[l]

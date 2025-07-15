@@ -21,7 +21,8 @@ def quick_sort_in_place(arr, low, high):
     quick_sort_in_place(arr, pi + 1, high)
 # This function sorts the array in place using the Quick Sort algorithm
 # It uses the partition function to find the pivot and recursively sorts the sub-arrays
-def partition(arr, low, high):
+def partition(arr, low, high): # Takes the pivot from the right.
+  # Can be done by making i = low and increment after swapping.
   pivot = arr[high]
   i = low - 1
   for j in range(low, high):
