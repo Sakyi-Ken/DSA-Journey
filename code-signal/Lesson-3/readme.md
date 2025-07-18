@@ -26,6 +26,12 @@ The space complexity of Merge Sort is O(n), due to the auxiliary space used for 
 
 # K-th Smallest or Largest Number
 
+## Time Complexity
+
+- Naive approaches have O(n^2) time complexity.
+- Efficient solution using Sorted has O(nlogn) time complexity.
+- More efficient solution using Quick sort has O(n) time complexity.
+
 _`The k-th largest element is at position (n - k + 1) when counting from the smallest.`_
 
 **Step-by-step derivation**
@@ -33,3 +39,12 @@ _`The k-th largest element is at position (n - k + 1) when counting from the sma
 - k-th largest means there are (k-1) elements larger than it
 - So there are n - (k-1) = n - k + 1 elements smaller than or equal to it
 - Therefore, it's the (n - k + 1)-th smallest
+
+# Inversion Count
+
+An inversion is a pair of elements where the larger element appears before the smaller one
+
+## Time Complexity
+
+- Naive approaches result in O(n^2) time complexity.
+- Efficient Solution using Merge Sort result in O(nlogn).
