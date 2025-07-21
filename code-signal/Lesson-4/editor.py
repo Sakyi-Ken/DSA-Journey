@@ -70,3 +70,42 @@ class History:
 
 history = History()
 history.undo_action()
+
+class Copy_Paste:
+  def __init__(self):
+    self.clipboard = []
+    self.history = []
+    self.text = ""
+
+  def copy(self, text):
+    self.clipboard.append(text)
+
+  def paste(self):
+    self.text += ", " + "".join(self.clipboard)
+
+  def cut(self, text):
+    self.copy(text)
+    self.text = self.text.replace(text, "", 1)
+
+  def undo(self):
+    if self.history:
+      self.text = self.history.pop()
+    else:
+      print("Nothing to undo.")
+  
+  def add_text(self, text):
+    self.history.append(self.text)
+    self.text += text
+
+  def display_text(self):
+    print(self.text)
+
+copy_paste = Copy_Paste()
+copy_paste.add_text("Hello, ")
+copy_paste.add_text("World!")
+copy_paste.display_text()
+copy_paste.copy("World!")
+copy_paste.paste()
+copy_paste.display_text()
+copy_paste.cut("World!")
+copy_paste.display_text() 
