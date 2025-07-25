@@ -7,6 +7,7 @@ class LinkedList:
   def __init__(self):
     self.head = None
     self.tail = None
+    self.size = 0
 
   # Function to add a node to the beginning of the linked list
   def push(self, new_data):
@@ -93,11 +94,16 @@ list.insert(3)
 list.print() # Output: 1 => 2 => 3 =>
 list.delete(2)
 list.print() # Output: 1 => 3 =>
+print()
 list.append(4)
 list.append(5)
 list.append(6)
 list.push(0)
 list.print() # Output: 0 => 1 => 3 => 4 => 5 => 6 =>
+print()
 print("Size of the linked list after insertions: ", list.size)  # Expected output: Size of the linked list after insertions: 4
-list.delete(6)
+list.remove(6)
 print("Size of the linked list after deletion: ", list.size)  # Expected output: Size of the linked list after deletion: 3
+list.print()  # Output: 0 => 1 => 3 => 4 => 5 => 
+print()
+print("Search for 3 in the linked list: ", list.search(3))  # Expected output: Search for 3 in the linked list: True
