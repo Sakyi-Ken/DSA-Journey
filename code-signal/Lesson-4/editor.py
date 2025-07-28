@@ -81,7 +81,10 @@ class Copy_Paste:
     self.clipboard.append(text)
 
   def paste(self):
-    self.text += ", " + "".join(self.clipboard)
+    if self.text:
+      self.text += ", " + "".join(self.clipboard)
+    else:
+      self.text += "".join(self.clipboard)
 
   def cut(self, text):
     self.copy(text)
