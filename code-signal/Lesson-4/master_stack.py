@@ -1,34 +1,25 @@
 # Problem 1: Previous Value Finder
-def find_previous_value(stack, current_value):
-    # Create a temporary stack to hold popped values
-    temp_stack = []
-    found = False
+def find_previous_value(stack, current_value): #copilot solution
+  # Create a temporary stack to hold popped values
+  temp_stack = []
+  found = False
 
-    # Pop elements from the original stack
-    while stack:
-        value = stack.pop()
-        if value == current_value:
-            found = True
-            break
-        temp_stack.append(value)
+  # Pop elements from the original stack
+  while stack:
+    value = stack.pop()
+    if value == current_value:
+      found = True
+      break
+    temp_stack.append(value)
 
-    # Push the popped values back onto the original stack
-    while temp_stack:
-        stack.append(temp_stack.pop())
+  # Push the popped values back onto the original stack
+  while temp_stack:
+    stack.append(temp_stack.pop())
 
-    # If the current value was found, return the previous value
-    if found and stack:
-        return stack[-1]
-    return None
-
-# Using brute force to find the previous value
-def brute_force_previous_value(stack, current_value):
-    previous_value = None
-    for value in stack:
-        if value == current_value:
-            return previous_value
-        previous_value = value
-    return -1
+  # If the current value was found, return the previous value
+  if found and stack:
+    return stack[-1]
+  return None
 
 def findSmallerPreceeding(numbers):
   result = [-1]
@@ -44,6 +35,8 @@ def findSmallerPreceeding(numbers):
 print(findSmallerPreceeding([2, 5, 1, 3, 4]))  # Output: [-1, 2, -1, 1, 3]
 
 # Problem 2: Stack Minimizer
+# Works as Stack but supports a special feature that allows
+# Retrieving the minimum value in the stack.
 class MinStack:
   def __init__(self):
     self.stack = []
