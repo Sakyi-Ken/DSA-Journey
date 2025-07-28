@@ -95,11 +95,12 @@ print(evaluate_postfix(postfix_expression))  # Output: 2.0
 
 def string_end(strng, n):
   stack = list(strng)
-  # stack = lst[n:]
   result = ''
   while n:
     result += stack.pop()
     n -= 1
+  # for i in range(0, n):
+  #   result += stack.pop()
   return result
 
 print(string_end("ijkshgegassem tnatropmi", 17))  # Expected output: important message
