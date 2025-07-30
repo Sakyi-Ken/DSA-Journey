@@ -64,16 +64,30 @@ def days_until_cooler(temps):
   result = [0] * len(temps)
   stack = []
 
+  # You are given a list of temperature, and you need to find out how many days it 
+  # will take until a cooler temperature occurs for each day.
+  # For each day, you will track the number of days until a cooler temperature occurs.
+  # A cooler temperature is lesser than a higher temperature.
+  # We have two ways to do this:
+  # 1. Starting from the left, before you'd get a cooler day, the current value should be greater than the preceeding value.
+  # 2. Beginning from the right, the current value should be lesser than the previous value.
+  # If there is no cooler temperature, return -1 for that day.
+  # For example, for the input [30, 60, 90, 120, 60, 30], the output should be [-1, 4, 2, 1, 1, -1].
+
+  # Method 1
   for i in range(len(temps) -1, -1, -1):
     while stack and temps[stack[-1]] >= temps[i]:
       stack.pop()
-    if stack:
-      result[i] = stack[-1] - i
-      stack.append(i)
-    else:
-        stack.append(i)
+    # if stack:
+    #   result[i] = stack[-1] - i
+    #   stack.append(i)
+    # else:
+    #     stack.append(i)
+    result[i] = stack[-1] - i if stack else -1
+    stack.append(i)
   return result
 
+  # Method 2
   # for i, temp in enumerate(temps):
   #   while stack and temps[stack[-1]] > temp:
   #     j = stack.pop()
@@ -81,7 +95,7 @@ def days_until_cooler(temps):
   #   stack.append(i)
   #   return result
   
-
+  # Method 3
     # for i in range(len(temps)):
     #   result[i] = 0
     #   for j in range(i + 1, len(temps)):
