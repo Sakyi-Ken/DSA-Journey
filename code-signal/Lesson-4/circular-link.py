@@ -13,6 +13,7 @@ class CircularLinkedList:
   # Constructor to initialize the linked list
   def __init__(self):
     self.head = None
+    self.tail = None  # Optional: to keep track of the last node for efficient insertion
   
   # Function to add new node to the end of Circular Linked List
   def append(self, data):
@@ -25,6 +26,19 @@ class CircularLinkedList:
       while cur.next != self.head:
         cur = cur.next
       cur.next = new_node
+      new_node.next = self.head
+  
+  # Alt using self.tail
+  # For circularLinkedList, for subsequent insertion, the curr should always be the new value 
+  def insert(self, value):
+    new_node = Node(value)
+    if not self.head:
+      self.head = new_node
+      self.tail = self.head
+    else:
+      while self.tail.next != self.head:
+        self.tail = self.tail.next
+      self.tail.next = new_node
       new_node.next = self.head
     
     # Function to display all nodes of Circular LinkedList
