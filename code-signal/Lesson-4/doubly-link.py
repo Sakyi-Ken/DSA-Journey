@@ -23,6 +23,19 @@ class DoublyLinkedList:
       self.tail.next = new_node
       new_node.prev = self.tail
       self.tail = new_node
+    
+  # Alt using temp
+  def append(self, value):
+    new_node = Node(value)
+    if not self.head:
+      self.head = new_node
+    else:
+      temp = self.head
+      while temp.next:
+        temp = temp.next
+      temp.next = new_node
+      new_node.prev = temp
+      temp = new_node
           
   # Delete method
   def delete(self, data):
