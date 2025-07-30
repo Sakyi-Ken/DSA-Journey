@@ -40,7 +40,7 @@ class LinkedList:
     else:
       temp = self.head
       while temp.next:
-          temp = temp.next
+        temp = temp.next
       temp.next = Node(data)
     self.size += 1
 
@@ -52,10 +52,11 @@ class LinkedList:
         if prev:
           prev.next = temp.next
           self.size -= 1
+          return
         else:
           self.head = temp.next
           self.size -= 1
-        return
+          return
       prev = temp
       temp = temp.next
       
