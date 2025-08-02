@@ -20,7 +20,7 @@ def in_order_traversal(node):
   if node is None:
     return
   in_order_traversal(node.left)  # Visit left subtree
-  print(str(node.value) + ' -> ', end='')
+  print(str(node.value) + ' -> ', end='') # Visit root
   in_order_traversal(node.right)  # Visit right subtree
 in_order_traversal(root)
 
@@ -30,7 +30,7 @@ print("\nPre-order Traversal:")
 def pre_order_traversal(node):
   if node is None:
     return
-  print(str(node.value) + ' -> ', end='')  # Visit root
+  print(str(node.value) + ' -> ', end='') # Visit root
   pre_order_traversal(node.left)  # Visit left subtree
   pre_order_traversal(node.right)  # Visit right subtree
 pre_order_traversal(root)
