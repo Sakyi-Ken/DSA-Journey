@@ -37,3 +37,21 @@ in ideal circumstances (where the tree is perfectly balanced), operations on bin
 
 **Comparatively**, for non-binary trees, searching for or deleting a node can still be O(n), but insertion may be more efficient —
 O(1) — if we keep track of where the next insertion should happen; if we don't, the complexity is the same as in binary tree.
+
+## DFS Algorithm
+
+_Explore the depth before the breadth_
+
+- The DFS algorithm starts at the root node, marking it as visited.
+- For every child node of the starter node:
+- If the child hasn't been visited, the algorithm recursively executes from the child node.
+- If the child has already been visited, the algorithm skips this node and proceeds to the next child.
+- The algorithm automatically finishes when all achievable nodes have been visited.
+
+## DFS Time and Space Complexity
+
+For DFS, the time complexity is O(V+E), where V represents the number of vertices (or nodes), and E represents the number of edges.
+DFS needs to visit every edge and vertex at least once, which dictates its time complexity.
+For trees specifically, as E=V−1, the dfs time complexity is O(V).
+
+The space complexity of DFS is O(V).
