@@ -49,7 +49,6 @@ def interleave_queues(queue1, queue2):
   interleave_queue = deque()
   # implement this
   half_size = len(queue1)
-  first_half = deque()
       
   for i in range(half_size):
     interleave_queue.append(queue1.popleft())
