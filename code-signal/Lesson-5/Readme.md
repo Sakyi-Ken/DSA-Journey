@@ -55,3 +55,19 @@ DFS needs to visit every edge and vertex at least once, which dictates its time 
 For trees specifically, as E=V−1, the dfs time complexity is O(V).
 
 The space complexity of DFS is O(V).
+
+## BFS Algorithm
+
+The potent search algorithm explores nodes level-by-level, examining all siblings before moving on to the children.
+In this algorithm, we aim to visit nodes closest to the root node first before moving deeper into the tree.
+**BFS** compared to **DFS** is like exploring your neighbourhood before moving to the next town, while **DFS** would be like
+driving straight across the country, visiting towns and routes, before coming back to your neighbourhood town.
+
+- Start with the root node.
+- Visit the root node and add all the its direct children to the queue.
+- Visit each node in the queue, adding all its unvisited children to the queue. Repeat this exercise until the queue is empty
+
+## BFS Time and Space Complexity
+
+Performing BFS requires inspecting all vertices and edges, resulting in a `time complexity` of O(V+E) As for trees E=V−1, the time complexity is O(V).
+The `space complexity` is O(V).
