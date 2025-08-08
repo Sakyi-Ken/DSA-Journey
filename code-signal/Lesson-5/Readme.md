@@ -71,3 +71,29 @@ driving straight across the country, visiting towns and routes, before coming ba
 
 Performing BFS requires inspecting all vertices and edges, resulting in a `time complexity` of O(V+E) As for trees E=V−1, the time complexity is O(V).
 The `space complexity` is O(V).
+
+## HEAP
+
+A **heap** is a complete binary tree that satisfies a special property known as the heap property.
+Essentially, the heap property stipulates that if _`P`_ is a parent node of _`C`_, the value of node _`P`_ is either greater than or equal
+to (in the case of a Max Heap) or lesser than or equal to (in a Min Heap) the value of node _`C`_.
+In simpler terms, in a `Max Heap`, each parent node is greater than or equal to its child node(s), and in a `Min Heap`, each parent node is less than or equal to its child node(s).
+
+## Heap Operations
+
+_Heaps support numerous operations, such as:_
+
+1. **Insert**: Inserting a new node in a heap may disrupt the heap property. To maintain the heap property after each insertion, the node is swapped with the parent node if the heap property is violated. This process continues until the heap property is retained for all nodes.
+
+2. **Delete**: The deletion of a node also disrupts the heap property. After deleting a node, the heap property is restored either by swapping the node with its parent, similar to the Insert operation or by swapping it with one of its children. The swapping process continues until the heap property is retained for all nodes.
+
+3. **Extract**: Extracting the maximum (for Max Heap) or minimum (for Min Heap) is a constant-time operation, as the maximum or the minimum element is always at the root of the heap.
+
+The `"Heapify"` method is an intriguing function used to rearrange elements in heap data structures. It assists in preserving the heap property within the heap. In Python, this operation can be executed using the heapify() function
+
+## Heap Sort
+
+- Build a MinHeap out of the array
+- Repeatedly remove the minimum element from the heap and insert it into the sorted array while ensuring the heap retains the MinHeap property.
+- Heap sort is a comparison-based sorting algorithm and is particularly efficient when dealing with large datasets due to its O(nlogn) time complexity.
+  The algorithm removes the minimal element in O(logn) time and repeats this operation n times.
