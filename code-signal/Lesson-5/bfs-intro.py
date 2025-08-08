@@ -5,6 +5,8 @@ def BFS(tree, root):
   visit_order = [] # List to keep visited nodes in order they are visited  
   queue = deque() # A queue to add nodes for visiting
 
+  level = {root: 0}
+
   queue.append(root) # We will start at the root 
 
   while queue: # While there are nodes to visit
@@ -12,12 +14,15 @@ def BFS(tree, root):
     visit_order.append(node) # Add it to the list of the visited nodes
     visited.add(node) # And mark as visited
 
+    level_of_node = level[node]
+
     # Now add all unvisited children to the queue
     for child in tree[node]:
       if child not in visited:
         queue.append(child)
-
-  return visit_order # Return the order of visited nodes
+        level[child] = level_of_node + 1
+        
+  return (visit_order, level) # Return the order of visited nodes and their levels
 
 # Tree definition
 tree = {
