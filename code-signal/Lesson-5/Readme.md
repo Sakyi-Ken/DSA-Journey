@@ -11,7 +11,7 @@ arrangement of entities known as nodes.
 - **Edge**: The connection between one node to another.
 - **Leaf**: A node that doesn't have any children.
 - **Depth of a Node**: The number of edges from the node to the tree's root node.
-- **Height of a Tree**: The maximal depth of the tree nodes.
+- **Height of a Tree**: The maximal depth of the tree nodes. (Maximum number of levels in the tree)
 - **Subtree**: Any node and its descendants form a subtree of the original tree.
 
 ## Tree properties:
@@ -97,3 +97,33 @@ The `"Heapify"` method is an intriguing function used to rearrange elements in h
 - Repeatedly remove the minimum element from the heap and insert it into the sorted array while ensuring the heap retains the MinHeap property.
 - Heap sort is a comparison-based sorting algorithm and is particularly efficient when dealing with large datasets due to its O(nlogn) time complexity.
   The algorithm removes the minimal element in O(logn) time and repeats this operation n times.
+
+## Binary Search Tree (BST)
+
+- BST is a type of binary search tree where each node has at most two children but every node ensures that the values of the
+  left subtree are lesser than or equal to it's value and the values on the right subtree are greater than it's value.
+
+## BST Deletion
+
+- If the node is a leaf node, delete the node outright.
+- If the node has only one child: Replace the node with its subtree.
+- If the node has both children: Find its in-order successor (the smallest value in its right subtree) or its in-order predecessor (the largest value in its left subtree)
+  and replace the node with that value. After replacing, delete the in-order successor or predecessor node.
+
+## Time and Space Complexity of BST Operations
+
+Considering the time and space complexity associated with BST operations is essential, as it gives us a thorough understanding of the efficiency and scalability of these operations in real-world applications.
+
+The performance of BST operations heavily depends on the height of the tree, which is the maximum number of levels in the tree. That's why binary search trees are considered efficient data structures, as they are designed to keep the height minimal.
+
+Here's a breakdown of the time complexity for the key BST operations:
+
+- **Insertion**: The worst-case time complexity is O(h), where h is the height of the tree. Since we start from the root and continue to either the left or right child, depending on the node's value, the time complexity is proportional to the height of the tree. The best-case time complexity is O(logn) if the tree is a complete binary tree (height is logn in that case).
+
+- **Searching**: The time complexity for the search operation, similar to insertion, is O(h) in the worst case and O(logn) in the best case scenario.
+
+- **Deletion**: The worst-case time complexity for deletion is also O(h), considering we need to search for the node to be deleted first. In the best case, it takes O(logn) time as well.
+
+The **space complexity** of all these operations is O(h) in worst-case conditions, as during the recursive operations (insertion, searching, or deletion), the auxiliary space required by the system stack is equivalent to the height of the tree. However, for a perfectly balanced Binary Search Tree, this would be O(logn).
+
+`It should be noted that BST operations' time complexity can degrade to O(n) in the worst-case scenario if the BST becomes skewed or unbalanced, meaning all nodes exist on a single side of the root, creating a linear-like structure. In practice, self-balancing BSTs are used to maintain an acceptable height, ensuring operations run in a relatively consistent O(logn) time - these trees balance themselves after every insertion or deletion operation to keep the height close to O(logn)`.
