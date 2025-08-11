@@ -4,6 +4,7 @@ class Node:
     self.right = None
     self.value = value
 
+# Manual input
 root = Node(5)
 root.left = Node(3)
 root.right = Node(9)
@@ -21,12 +22,33 @@ def insert(root, key):
       root.left = insert(root.left, key)
   return root
 
+def insert_BST(root, node):
+  if root is None:
+    root = node
+    return
+  elif root.value > node.value:
+    if root.left is None:
+      root.left = node
+    else:
+      insert_BST(root.left, node)
+  else:
+    if root.right is None:
+      root.right = node
+    else:
+      insert_BST(root.right, node)  
+
 def search(root, key):
   if root is None or root.value == key:
     return root
   if root.value < key:
     return search(root.right, key)
   return search(root.left, key)
+
+def in_order_traversal(root):
+  if root:
+    in_order_traversal(root.left)
+    print(root.value, end=" -> ")
+    in_order_traversal(root.right)
 
 def minValueNode(node):
   # This function finds the node with the smallest value in a BST
@@ -65,6 +87,7 @@ def deleteNode(root, key):
     
     # If node has two children, get the inorder successor (smallest in the right subtree)
     temp = minValueNode(root.right)
+    # temp = maxValueNode(root.left)
 
     # Copy the inorder successor's content to this node
     root.value = temp.value
@@ -72,3 +95,16 @@ def deleteNode(root, key):
     # Delete the inorder successor
     root.right = deleteNode(root.right, temp.value)
   return root
+
+# Driver Code:
+root = Node(6)
+insert_BST(root, Node(8))
+insert_BST(root, Node(2))
+insert_BST(root, Node(5))
+insert_BST(root, Node(4))
+insert_BST(root, Node(9))
+print("In-order traversal:")
+in_order_traversal(root)
+print("In-order traversal after deleting:")
+root = deleteNode(root, 2)
+in_order_traversal(root)
