@@ -53,7 +53,7 @@ def kth_smallest(root, k):
     current = stack.pop()
     k -= 1
     if k == 0:
-      return current.value
+      return current.val
     current = current.right
   return None
 
@@ -96,3 +96,10 @@ root.right.right = TreeNode(8)
 
 print(is_balanced(root))  # Output: True
 print(kth_smallest(root, 3))  # Output: 4
+
+root = TreeNode(2)
+root.right = TreeNode(4)
+root.right.left = TreeNode(1)
+root.right.right = TreeNode(5)
+
+print(is_balanced(root))  # Output: False
