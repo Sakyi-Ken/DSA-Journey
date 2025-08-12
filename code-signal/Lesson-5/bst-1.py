@@ -86,20 +86,23 @@ class TreeNode:
     self.left = None
     self.right = None
 
-root = TreeNode(5)
-root.left = TreeNode(3)
-root.right = TreeNode(7)
-root.left.left = TreeNode(2)
-root.left.right = TreeNode(4)
-root.right.left = TreeNode(6)
-root.right.right = TreeNode(8)
+# root = TreeNode(5)
+# root.left = TreeNode(3)
+# root.right = TreeNode(7)
+# root.left.left = TreeNode(2)
+# root.left.right = TreeNode(4)
+# root.right.left = TreeNode(6)
+# root.right.right = TreeNode(8)
 
-print(is_balanced(root))  # Output: True
-print(kth_smallest(root, 3))  # Output: 4
+# print(is_balanced(root))  # Output: True
+# print(kth_smallest(root, 3))  # Output: 4
+# print(kthSmallest(root, 3))
 
 root = TreeNode(2)
 root.right = TreeNode(4)
-root.right.left = TreeNode(1)
+root.right.left = TreeNode(3)
 root.right.right = TreeNode(5)
 
 print(is_balanced(root))  # Output: False
+print(kth_smallest(root, 2))  # Output: 3
+print(kthSmallest(root, 3))  # Output: 4
