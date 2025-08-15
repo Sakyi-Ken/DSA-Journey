@@ -43,6 +43,8 @@ def is_balanced(root) -> bool:
 
 # Problem 2: Identify the K-th Smallest Element in a Binary Search Tree
 # This approach has O(k) time complexity, as we visit at most k vertices in the tree.
+# This approach uses inorder traversal
+# In order traversal prints all nodes in ascending order.
 def kth_smallest(root, k):
   stack = []
   current = root
@@ -78,6 +80,42 @@ def countNodes(root):
   if not root:
     return 0
   return 1 + countNodes(root.left) + countNodes(root.right)
+
+class AugmentedTreeNode:
+  def __init__(self, val):
+    self.val = val
+    self.left = None
+    self.right = None
+    self.size = 1  # size of subtree rooted at this node
+
+def update_size(node):
+  if node:
+    node.size = 1
+    if node.left:
+      node.size += node.left.size
+    if node.right:
+      node.size += node.right.size
+
+def insert_augmented(root, val):
+  if not root:
+    return AugmentedTreeNode(val)
+  if val < root.val:
+    root.left = insert_augmented(root.left, val)
+  else:
+    root.right = insert_augmented(root.right, val)
+  update_size(root)
+  return root
+
+def kthSmallest(root, k):
+  if not root:
+    return None
+  left_size = root.left.size if root.left else 0
+  if k == left_size + 1:
+    return root.val
+  elif k <= left_size:
+    return kthSmallest(root.left, k)
+  else:
+    return kthSmallest(root.right, k - left_size - 1)
 
 # Example usage
 class TreeNode:
