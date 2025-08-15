@@ -106,3 +106,40 @@ root.right.right = TreeNode(5)
 print(is_balanced(root))  # Output: False
 print(kth_smallest(root, 2))  # Output: 3
 print(kthSmallest(root, 3))  # Output: 4
+
+# Problem 4: Finding max height difference for every node
+class TreeNode:
+  def __init__(self, x):
+    self.val = x
+    self.left = None
+    self.right = None
+
+def max_height_diff(root):
+  def height(node):
+    if not node:
+      return 0, 0
+    left_height, diff_left = height(node.left)
+    right_height, diff_right = height(node.right)
+    
+    node_height = 1 + max(left_height, right_height)
+    diff_height = abs(left_height - right_height)
+    max_diff = max(diff_height, diff_left, diff_right)
+    
+    return node_height, max_diff
+        
+  if root is None:
+    return 0, 0
+  left_height, diff_left = height(root.left)
+  right_height, diff_right = height(root.right)
+  diff_height = abs(left_height - right_height)
+  max_height = max(diff_height, diff_left, diff_right)
+  return max_height 
+
+# Test samples
+root = TreeNode(10)
+root.left = TreeNode(5)
+root.right = TreeNode(15)
+root.right.left = TreeNode(13)
+root.right.right = TreeNode(17)
+
+print(max_height_diff(root)) # Expected output: 1
