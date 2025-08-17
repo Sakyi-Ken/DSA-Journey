@@ -1,0 +1,1 @@
+**Adjacency Matrix** in essence, it is a square matrix, a two-dimensional array, where each cell (i, j) signifies the weight of the edge between vertices i and j in the graph.
