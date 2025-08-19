@@ -12,23 +12,6 @@ for row in M:
 
 # Output: [0, 1, 1], [1, 0, 0], [1, 0, 0]
 
-# Friend Recommendation System
-# solution 1
-M[0][1] = M[1][0] = 1
-M[1][2] = M[2][1] = 1
-def recommend_friends(M, person):
-  friends = set()
-  for i in range(len(M)):
-    if M[person][i] == 1:  # If 'person' is friends with 'i'
-      for j in range(len(M)):
-        if M[i][j] == 1 and j != person and M[person][j] == 0:
-          friends.add(j)
-  return friends
-
-# Example usage
-recommended = recommend_friends(M, 0)  # Recommend friends for Alice
-print("Recommended friends for Alice:", recommended)
-
 # Solution 2
 users = 4 # A: 0, B: 1, C: 2, D: 3
 M = [[0] * users for _ in range(users)] # Adjacency Matrix
@@ -68,3 +51,44 @@ M[2][6] = M[6][2] = 1  # Project 2 and Project 6
 # Print the adjacency matrix
 for row in M:
   print(row)
+
+print("\nSuggest Friends")
+# Let's consider a different graph for 5 people: A: 0, B: 1, C: 2, D: 3, E: 4
+# A is friends with B and C
+# B is friends with A, C and D
+# C is friends with A, B and E
+# D is friends with B
+# E is friends with C
+
+# Number of people
+n = 5
+users = ['A', 'B', 'C', 'D', 'E']
+
+# Initialize the adjacency matrix
+M = [[0] * n for _ in range(n)]
+
+# Map the relationships
+# A
+M[0][1] = M[0][2] = 1
+# B
+M[1][0] = M[1][2] = M[1][3] = 1
+# C
+M[2][0] = M[2][1] = M[2][4] = 1
+# D
+M[3][1] = 1
+# E
+M[4][2] = 1
+
+# Print the Graph
+for row in range(n):
+  print(M[row])
+
+# Suggest friends for each user, avoiding cases where users are suggested to be friends with themselves
+for i in range(n):
+  for j in range(n):
+    if i != j:
+      if M[i][j] == 0 and any(M[i][k] and M[k][j] for k in range(n)):
+        print(
+          f"Based on the mutual friends, "
+          f"User {users[i]} and User {users[j]} may know each other."
+        )
