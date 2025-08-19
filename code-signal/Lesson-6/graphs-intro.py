@@ -14,6 +14,8 @@ for row in M:
 
 # Friend Recommendation System
 # solution 1
+M[0][1] = M[1][0] = 1
+M[1][2] = M[2][1] = 1
 def recommend_friends(M, person):
   friends = set()
   for i in range(len(M)):
@@ -49,3 +51,20 @@ for i in range(users):
       print(f"Suggesting User {j} to User {i} based on mutual friends.")
 
 # Output: Suggesting User 0 to User 2 based on mutual friends.
+
+print("\nProject Zone")
+# Number of projects
+n = 7
+
+# Initialize the adjacency matrix
+M = [[0] * n for _ in range(n)]
+
+# TODO: Map the overlapping project teams in the adjacency matrix. Consider that projects that have overlapping team members are: 
+# 1) projects at indices 0 and 1
+# 2) projects at indices 2 and 6 
+M[0][1] = M[1][0] = 1  # Project 0 and Project 1
+M[2][6] = M[6][2] = 1  # Project 2 and Project 6
+
+# Print the adjacency matrix
+for row in M:
+  print(row)
