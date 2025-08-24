@@ -13,3 +13,5 @@ DFS is an algorithmic solution for traversing or searching through data structur
 _In terms of time efficiency, DFS thrives on densely connected graphs where the probability of finding the target quickly exceeds that of BFS._
 
 `However, all tools have their limitations and nuances. DFS does not perform optimally in problems necessitating the shortest path, such as GPS routing problems, where BFS is a superior choice. Additionally, DFS requires careful management when dealing with cycles within the graph, as it could end up in an infinite loop without effective control over the visited nodes.`
+
+_In a graph, a cycle exists if we can start at a node, traverse along the edges, and return to the same node without retracing any edge._
