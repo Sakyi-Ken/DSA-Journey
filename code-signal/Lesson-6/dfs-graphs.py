@@ -64,3 +64,50 @@ def DFS(courses, start_course, passed_courses):
 passed_courses = set()
 # Call the DFS function, start the traversal with 'Math'
 DFS(university_courses, 'Math', passed_courses)
+
+# Determing a cycle in a graph
+def has_cycle(graph):
+  visited = set()
+  rec_stack = set()
+
+  def dfs(node):
+    if node in rec_stack:
+      return True
+    if node in visited:
+      return False
+
+    visited.add(node)
+    rec_stack.add(node)
+
+    for neighbor in graph.get(node, []):
+      if dfs(neighbor):
+        return True
+
+    rec_stack.remove(node)
+    return False
+
+  for course in graph:
+    if dfs(course):
+      return True
+  return False
+
+# Check for cycles in the university courses graph
+print("Cycle detected:" if has_cycle(university_courses) else "No cycle found.")
+
+# This approach has a linear time complexity of O(V + E) where V is the number of vertices 
+# and E the number of edges in a graph. 
+def has_cycle_connected(graph):
+  visited = set()
+  # Starting from the first node in the graph
+  return dfs(next(iter(graph)), visited, graph, None)
+
+def dfs(vertex, visited, graph, parent):
+  visited.add(vertex)
+  for neighbour in graph[vertex]:
+    if neighbour not in visited:
+      if dfs(neighbour, visited, graph, vertex):
+        return True
+    elif neighbour != parent:
+      # The parent is already visited, but the parent -> vertex -> parent is degenerate
+      return True
+  return False
