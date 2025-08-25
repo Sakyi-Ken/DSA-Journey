@@ -111,3 +111,36 @@ def dfs(vertex, visited, graph, parent):
       # The parent is already visited, but the parent -> vertex -> parent is degenerate
       return True
   return False
+
+# Check for disconnected graphs
+def has_cycle(graph):
+  visited = set()
+  for node in graph:
+    if node not in visited:
+      value = dfs(node, visited, graph, None)
+      if value:
+        return True
+  return False
+
+def dfs(vertex, visited, graph, parent):
+  visited.add(vertex)
+
+  for neighbor in graph[vertex]:
+    if neighbor not in visited:
+      if dfs(neighbor, visited, graph, vertex):
+        return True
+    elif neighbor != parent:
+      return True
+  return False
+
+# Test the function
+graph = {
+  'A': ['B', 'C'],
+  'B': ['A'],
+  'C': ['A', 'D'],
+  'D': ['C'],
+  'E': ['G', 'K'],
+  'K': ['G', 'E'],
+  'G': ['K', 'E']
+}
+print(has_cycle(graph))
